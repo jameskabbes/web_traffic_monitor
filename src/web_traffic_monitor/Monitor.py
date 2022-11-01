@@ -18,7 +18,7 @@ class Monitor( Base ):
 
     OVERRIDE_OPTIONS = {
     1: [ 'Open Slugs', 'open_Child_user' ],
-    2: [ 'Query Database', 'query_db'],
+    2: [ 'Query Database', 'query_db_user'],
     5: [ 'test', 'test'],
     6: [ 'Reload', '_import'],
     7: [ '', 'do_nothing' ]
