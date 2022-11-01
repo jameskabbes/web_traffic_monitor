@@ -2,7 +2,7 @@ from parent_class import ParentClass
 from web_traffic_monitor import CustomRTI
 import py_starter as ps
 
-class Parent( ParentClass ):
+class Base( ParentClass ):
 
     BASE_OPTIONS = {
     1: ['','do_nothing'],
@@ -37,7 +37,6 @@ class Parent( ParentClass ):
         return self.display()
 
     def display( self ):
-
         return self.print_one_line_atts( print_off = False, leading_string='' )
 
     def open_Child_user( self ):
@@ -98,5 +97,4 @@ class Parent( ParentClass ):
         self.exit()
 
     def exit( self ):
-
         pass

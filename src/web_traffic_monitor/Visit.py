@@ -1,12 +1,12 @@
-from web_traffic_monitor import Tables, Columns, Parent, utils
+from web_traffic_monitor import Tables, Columns, Base, utils
 
 import py_starter as ps
 import pandas as pd
 
-class Visit( Parent ):
+class Visit( Base ):
 
     def __init__( self, Visits_inst, **kwargs ):
-        Parent.__init__( self )
+        Base.__init__( self )
         self.set_atts( kwargs )
         self.Visits = Visits_inst
 
@@ -36,7 +36,7 @@ class Visit( Parent ):
                 return None
 
             if slug not in Slugs_inst.Slugs:
-                Slugs_inst.add_Slug( slug )
+                Slugs_inst.make_Slug( slug )
             else:
                 if not ps.confirm_raw( 'This Slug already exists.' ):
                     continue
@@ -60,4 +60,4 @@ class Visit( Parent ):
         self.Visits._remove( self )
 
     def export( self ) -> pd.DataFrame:
-        return utils.turn_class_atts_into_df_row( self, Tables.tables[ Tables.dim ]['columns'] )
+        return utils.turn_class_atts_into_df_row( self, Tables.tables[ Tables.visits ]['columns'] )

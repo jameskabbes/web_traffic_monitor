@@ -1,8 +1,8 @@
 from parent_class import ParentClass
-from web_traffic_monitor import Columns, Tables, Parent, Redirects, Visits, Visit, utils
+from web_traffic_monitor import Columns, Tables, Base, Redirects, Visits, Visit, utils
 
 
-class Slug( Parent ):
+class Slug( Base ):
 
     OVERRIDE_OPTIONS = {
     1: [ 'Open Redirects', 'open_Redirects' ],
@@ -11,7 +11,7 @@ class Slug( Parent ):
     }
 
     def __init__( self, Slugs_inst, slug ):
-        Parent.__init__( self )
+        Base.__init__( self )
 
         self.set_attr( Columns.slug, slug ) 
         self.Slugs = Slugs_inst
@@ -63,6 +63,5 @@ class Slug( Parent ):
             Columns.datetime: utils.get_current_timestamp()
         }
 
-        new_Visit = Visit.make( self, **kwargs )
-        self.Visits.add_Visit( new_Visit )
-
+        new_Visit = self.Visits.make_Visit( **kwargs )
+        return new_Visit

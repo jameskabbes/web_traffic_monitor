@@ -1,17 +1,17 @@
-from web_traffic_monitor import Columns, Tables, Parent, utils
+from web_traffic_monitor import Columns, Tables, Base, utils
 
 
 import py_starter as ps
 import pandas as pd
 
-class Redirect( Parent ):
+class Redirect( Base ):
 
     OVERRIDE_OPTIONS = {
     1: [ 'Make Inactivate', 'terminate' ]
     }
 
     def __init__( self, Redirects_inst, **kwargs ):
-        Parent.__init__( self )
+        Base.__init__( self )
         self.set_atts( kwargs )
         self.Redirects = Redirects_inst
 
@@ -49,7 +49,7 @@ class Redirect( Parent ):
                 return None
 
             if slug not in Slugs_inst.Slugs:
-                Slugs_inst.add_Slug( slug )
+                Slugs_inst.make_Slug( slug )
             else:
                 if not ps.confirm_raw( 'This Slug already exists.' ):
                     continue

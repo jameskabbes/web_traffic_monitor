@@ -1,10 +1,10 @@
 from parent_class import ParentPluralList
-from web_traffic_monitor import Parent, Visit
+from web_traffic_monitor import Base, Visit
 
 import py_starter as ps
 import pandas as pd
 
-class Visits( Parent, ParentPluralList ):
+class Visits( Base, ParentPluralList ):
 
     OVERRIDE_OPTIONS = {
     1: [ 'Open Visit', 'open_Child_user' ],
@@ -14,7 +14,7 @@ class Visits( Parent, ParentPluralList ):
 
     def __init__( self, Slug_inst ):
         ParentPluralList.__init__( self, 'Visits' )
-        Parent.__init__( self )
+        Base.__init__( self )
         self.Slug = Slug_inst
 
     @staticmethod
@@ -23,8 +23,9 @@ class Visits( Parent, ParentPluralList ):
 
     def make_Visit( self, **kwargs ):
         new_Visit = Visit.make( self, **kwargs )
+        self.add_Visit( new_Visit ) 
         return new_Visit
-        
+
     def add_Visit( self, Visit_inst ):
         self._add( Visit_inst )
 

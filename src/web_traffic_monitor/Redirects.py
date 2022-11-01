@@ -1,11 +1,11 @@
 from parent_class import ParentPluralList 
 
-from web_traffic_monitor import Columns, Tables, utils, Parent, Redirect
+from web_traffic_monitor import Columns, Tables, utils, Base, Redirect
 
 import py_starter as ps
 import pandas as pd
 
-class Redirects( Parent, ParentPluralList ):
+class Redirects( Base, ParentPluralList ):
 
     OVERRIDE_OPTIONS = {
     1: [ 'Open Redirect', 'open_Child_user' ],
@@ -14,7 +14,7 @@ class Redirects( Parent, ParentPluralList ):
 
     def __init__( self, Slug_inst ):
         ParentPluralList.__init__( self, 'Redirects' )
-        Parent.__init__( self )
+        Base.__init__( self )
         self.Slug = Slug_inst
 
     @staticmethod
@@ -26,17 +26,14 @@ class Redirects( Parent, ParentPluralList ):
         return new_Redirect
 
     def add_Redirect( self, Redirect_inst ):
-
         self._add( Redirect_inst )
 
     def get_current( self ):
-
-        current = []
+        
         for Redirect_inst in self:
             if Redirect_inst.get_attr( Columns.is_current ):
-                current.append( Redirect_inst )
-
-        return current
+                return Redirect_inst
+        return None
 
     def export( self ) -> pd.DataFrame:
 
