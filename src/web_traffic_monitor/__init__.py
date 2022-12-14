@@ -6,7 +6,6 @@ _src_Dir = _Dir.ascend()                                  #src Dir that is one a
 _repo_Dir = _src_Dir.ascend()                    
 _cwd_Dir = do.Dir( do.get_cwd() )
 
-from .CustomRTI import CustomRTI
 # Custom RTI dependency
 from .Base import Base
 

@@ -8,7 +8,5 @@ class Columns:
     datetime_end = 'datetime_end'
     is_current = 'is_current'
 
-
-    searchable = [ id, slug, redirect ]
     datetime_cols = [ datetime, datetime_start, datetime_end ]
 

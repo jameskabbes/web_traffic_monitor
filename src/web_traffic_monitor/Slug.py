@@ -4,11 +4,15 @@ from web_traffic_monitor import Columns, Tables, Base, Redirects, Visits, Visit,
 
 class Slug( Base ):
 
-    OVERRIDE_OPTIONS = {
+    _OVERRIDE_OPTIONS = {
     1: [ 'Open Redirects', 'open_Redirects' ],
     2: [ 'Open Visits', 'open_Visits'],
     3: [ 'Log Visit', 'log_Visit']
     }
+
+    _IMP_ATTS = [ Columns.slug, 'Redirects','Visits' ]
+    _ONE_LINE_ATTS = [ 'type', Columns.slug ]
+    _SEARCHABLE_ATTS = [ Columns.slug ]
 
     def __init__( self, Slugs_inst, slug ):
         Base.__init__( self )
@@ -18,29 +22,9 @@ class Slug( Base ):
         self.Redirects = Redirects.make( self )
         self.Visits = Visits.make( self )
 
-    def __len__( self ):
-        return 2
-
-    def __iter__( self ):
-        self.i = -1
-        return self
-
-    def __next__( self ):
-        self.i += 1
-        if self.i == 0:
-            return self.Redirects
-        elif self.i == 1:
-            return self.Visits
-        raise StopIteration
+        self._Children = [ self.Redirects, self.Visits ]
         
-    def print_imp_atts(self, **kwargs):
-        return self._print_imp_atts_helper( atts = [Columns.slug, 'Redirects','Visits'], **kwargs )
-
-    def print_one_line_atts(self, **kwargs):
-        return self._print_one_line_atts_helper( atts = ['type', Columns.slug], **kwargs )
-
     def display(self):
-
         return self.get_attr( Columns.slug ) + ', Redirects: ' + str(len(self.Redirects)) + ', Visits: ' + str(len(self.Visits))
 
     @staticmethod

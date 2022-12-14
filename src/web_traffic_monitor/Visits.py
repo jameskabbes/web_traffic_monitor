@@ -4,10 +4,10 @@ from web_traffic_monitor import Base, Visit
 import py_starter as ps
 import pandas as pd
 
-class Visits( Base, ParentPluralList ):
+class Visits( ParentPluralList, Base ):
 
-    OVERRIDE_OPTIONS = {
-    1: [ 'Open Visit', 'open_Child_user' ],
+    _OVERRIDE_OPTIONS = {
+    1: [ 'Open Visit', 'run_Child_user' ],
     7: [ '', 'do_nothing' ]
     }
 

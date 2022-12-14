@@ -5,10 +5,10 @@ from web_traffic_monitor import Columns, Tables, utils, Base, Redirect
 import py_starter as ps
 import pandas as pd
 
-class Redirects( Base, ParentPluralList ):
+class Redirects( ParentPluralList, Base ):
 
-    OVERRIDE_OPTIONS = {
-    1: [ 'Open Redirect', 'open_Child_user' ],
+    _OVERRIDE_OPTIONS = {
+    1: [ 'Open Redirect', 'run_Child_user' ],
     7: [ '', 'do_nothing' ]
     }
 

@@ -16,29 +16,18 @@ class Monitor( Base ):
         }
     }
 
-    OVERRIDE_OPTIONS = {
-    1: [ 'Open Slugs', 'open_Child_user' ],
+    _OVERRIDE_OPTIONS = {
+    1: [ 'Open Slugs', 'run_Child_user' ],
     2: [ 'Query Database', 'query_db_user'],
     5: [ 'test', 'test'],
-    6: [ 'Reload', '_import'],
-    7: [ '', 'do_nothing' ]
+    6: [ 'Reload', '_import']
     }
 
     def __init__( self, **kwargs ):
         super().__init__(  **kwargs )
         self.init_db()
         self._import()
-
-    def __len__( self ):
-        return 1
-    def __iter__( self ):
-        self.i = -1
-        return self
-    def __next__( self ):
-        self.i += 1
-        if self.i == 0:
-            return self.Slugs
-        raise StopIteration
+        self._Children = [ self.Slugs ]
 
     def init_db( self ):
 

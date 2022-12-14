@@ -5,23 +5,15 @@ import pandas as pd
 
 class Visit( Base ):
 
+    _IMP_ATTS = [Columns.slug, Columns.datetime]
+    _ONE_LINE_ATTS = ['type', Columns.datetime, Columns.slug]
+    _SEARCHABLE_ATTS = [ Columns.datetime ]
+
+
     def __init__( self, Visits_inst, **kwargs ):
         Base.__init__( self )
         self.set_atts( kwargs )
         self.Visits = Visits_inst
-
-    def __len__( self ):
-        return 1
-    def __iter__( self ):
-        return self
-    def __next__( self ):
-        raise StopIteration
-
-    def print_imp_atts(self, **kwargs):
-        return self._print_imp_atts_helper( atts = [Columns.slug, Columns.datetime], **kwargs )
-
-    def print_one_line_atts(self, **kwargs):
-        return self._print_one_line_atts_helper( atts = ['type', Columns.datetime, Columns.slug], **kwargs )
 
     @staticmethod
     def make( *args, **kwargs ):

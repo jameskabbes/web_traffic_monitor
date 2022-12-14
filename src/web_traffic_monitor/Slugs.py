@@ -4,10 +4,10 @@ import pandas as pd
 
 import py_starter as ps
 
-class Slugs( Base, ParentPluralDict ):
+class Slugs( ParentPluralDict, Base ):
 
-    OVERRIDE_OPTIONS = {
-    1: [ 'Open Slug', 'open_Child_user' ],
+    _OVERRIDE_OPTIONS = {
+    1: [ 'Open Slug', 'run_Child_user' ],
     2: [ 'Make New Redirect', 'make_Redirect_user'],
     3: [ 'Make New Visit', 'make_Visit_user'],
     7: [ '', 'do_nothing' ]
@@ -53,7 +53,7 @@ class Slugs( Base, ParentPluralDict ):
 
         new_Visit = Visit.make_user( self )
         if new_Visit != None:
-            self._add_Visit( new_Visit )
+            self.Slugs[ new_Visit.get_attr( Columns.slug )].Visits.add_Visit( new_Visit )
 
     ### Redirect
     def make_Redirect_user( self ):
@@ -115,6 +115,3 @@ class Slugs( Base, ParentPluralDict ):
         self.Monitor.db_conn.write( df_redirects, Tables.redirects, if_exists='replace' )
         self.Monitor.db_conn.write( df_visits, Tables.visits, if_exists='replace' )
 
-    def run_RTI_choice(self, Slug_inst):
-
-        Slug_inst.run()

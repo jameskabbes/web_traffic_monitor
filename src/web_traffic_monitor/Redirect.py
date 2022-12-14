@@ -10,31 +10,21 @@ class Redirect( Base ):
     1: [ 'Make Inactivate', 'terminate' ]
     }
 
+    _IMP_ATTS = [Columns.id, Columns.slug, Columns.redirect, Columns.datetime_start, Columns.datetime_end, Columns.is_current]
+    _ONE_LINE_ATTS = ['type', Columns.slug, Columns.redirect, Columns.is_current]
+    _SEARCHABLE_ATTS = [ Columns.id, Columns.redirect ]
+
     def __init__( self, Redirects_inst, **kwargs ):
         Base.__init__( self )
         self.set_atts( kwargs )
         self.Redirects = Redirects_inst
 
-    def __len__( self ):
-        return 1
-    def __iter__( self ):
-        return self
-    def __next__( self ):
-        return StopIteration
     def __eq__( self, other ):
         try:
             other.get_attr( Columns.redirect ) == self.get_attr( Columns.redirect )
         except:
             return False
         return True
-
-    def print_imp_atts(self, **kwargs):
-        return self._print_imp_atts_helper( atts = [Columns.id, Columns.slug, Columns.redirect, Columns.datetime_start, Columns.datetime_end, Columns.is_current],
-                                            **kwargs)
-
-    def print_one_line_atts(self, **kwargs):
-        return self._print_one_line_atts_helper( atts = ['type', Columns.slug, Columns.redirect, Columns.is_current],
-                                                **kwargs )
             
     @staticmethod
     def make( *args, **kwargs ):
