@@ -105,13 +105,6 @@ class Redirect( Base ):
     def make_past( self ):
         self.set_attr( Columns.is_current , False )
 
-    def string_found_in_Children( self, string_lower ):
-        
-        for column in Columns.searchable:
-            if string_lower in self.get_attr( column ):
-                return [ self ]
-        return []
-
     def delete( self ):
         self.Redirects._remove( self )
 
