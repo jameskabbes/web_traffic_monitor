@@ -6,7 +6,7 @@ import pandas as pd
 
 class Redirect( Base ):
 
-    OVERRIDE_OPTIONS = {
+    _OVERRIDE_OPTIONS = {
     1: [ 'Make Inactivate', 'terminate' ]
     }
 
