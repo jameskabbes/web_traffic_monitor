@@ -16,7 +16,8 @@ class Monitor( Base, kabbes_client.Client ):
     1: [ 'Open Slugs', 'run_Child_user' ],
     2: [ 'Query Database', 'query_db_user'],
     5: [ 'test', 'test'],
-    6: [ 'Reload', '_import']
+    6: [ 'Reload', '_import'],
+    7: [ "Print Config", "print_config"]
     }
 
     _CONFIG = {
@@ -31,6 +32,10 @@ class Monitor( Base, kabbes_client.Client ):
         self.init_db()
         self._import()
         self._Children = [ self.Slugs ]
+
+    def print_config( self ):
+
+        self.cfg.print_atts()
 
     def init_db( self ):
 

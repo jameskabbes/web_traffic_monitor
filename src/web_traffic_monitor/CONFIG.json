@@ -1,17 +1,19 @@
 {
 
-    "!data_Dir":{
-        "$ref": "{{_Dir}}",
-        "method": {
-            "name": "join_Dir",
-            "kwargs": {
-                "path": "Data"
+    "data":{
+        "!Dir":{
+            "$ref": "{{cwd.Dir}}",
+            "method": {
+                "name": "join_Dir",
+                "kwargs": {
+                    "path": "Data"
+                }
             }
         }
     },
 
     "!db_Path":{
-        "$ref": "{{data_Dir}}",
+        "$ref": "{{data.Dir}}",
         "method": {
             "name": "join_Path",
             "kwargs": {
