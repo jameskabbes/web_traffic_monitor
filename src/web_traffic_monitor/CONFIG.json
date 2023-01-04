@@ -1,0 +1,41 @@
+{
+
+    "!data_Dir":{
+        "$ref": "{{_Dir}}",
+        "method": {
+            "name": "join_Dir",
+            "kwargs": {
+                "path": "Data"
+            }
+        }
+    },
+
+    "!db_Path":{
+        "$ref": "{{data_Dir}}",
+        "method": {
+            "name": "join_Path",
+            "kwargs": {
+                "path": "web_traffic_monitor.db"
+            }
+        }       
+    },
+    "!db_path":{
+        "$ref": "{{db_Path}}",
+        "attribute": "path"
+    },
+
+    "db_connection_module": "sqlite",
+
+
+    "db_conn_kwargs" : {
+        "db_path": "{{db_path}}",
+        "connection_module":"{{db_connection_module}}"       
+    },
+
+    "db_get_conn_kwargs": {
+        "check_same_thread": false
+    }
+    
+
+}
+

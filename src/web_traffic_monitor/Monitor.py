@@ -1,19 +1,15 @@
 import database_connections.sql_support_functions as ssf
 import pandas as pd
 
+import kabbes_client
+
+import web_traffic_monitor
 from web_traffic_monitor import Tables, Base, Slugs
 from flask import redirect
 
-class Monitor( Base ):
+class Monitor( Base, kabbes_client.Client ):
 
     DEFAULT_ATT_VALUES = {
-        'db_conn_kwargs' : {
-            'db_path': './Data/web_traffic_monitor.db',
-            'connection_module': 'sqlite'
-        },
-        'db_get_conn_kwargs': {
-            'check_same_thread': False
-        }
     }
 
     _OVERRIDE_OPTIONS = {
@@ -23,8 +19,15 @@ class Monitor( Base ):
     6: [ 'Reload', '_import']
     }
 
-    def __init__( self, **kwargs ):
-        super().__init__(  **kwargs )
+    _CONFIG = {
+        "_Dir": web_traffic_monitor._Dir
+    }
+
+    def __init__( self, *args, **kwargs ):
+
+        Base.__init__( self )
+        kabbes_client.Client.__init__( self, *args, **kwargs )
+
         self.init_db()
         self._import()
         self._Children = [ self.Slugs ]
@@ -32,8 +35,8 @@ class Monitor( Base ):
     def init_db( self ):
 
         self.db_conn = ssf.get_DatabaseConnection()
-        self.db_conn.set_atts( self.db_conn_kwargs  )
-        self.db_conn.get_conn( **self.db_get_conn_kwargs )
+        self.db_conn.set_atts( self.cfg.db_conn_kwargs.get_dict()  )
+        self.db_conn.get_conn( **self.cfg.db_get_conn_kwargs.get_dict() )
         self.db_conn.get_cursor()
 
         # initialize tables if they somehow got deleted
