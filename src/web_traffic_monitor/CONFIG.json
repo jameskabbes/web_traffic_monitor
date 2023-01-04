@@ -17,7 +17,7 @@
         "method": {
             "name": "join_Path",
             "kwargs": {
-                "path": "web_traffic_monitor.db"
+                "path": "{{package.name}}.db"
             }
         }       
     },
