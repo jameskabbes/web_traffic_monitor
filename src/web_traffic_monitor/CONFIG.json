@@ -1,33 +1,7 @@
 {
 
-    "data":{
-        "!Dir":{
-            "$ref": "{{cwd.Dir}}",
-            "method": {
-                "name": "join_Dir",
-                "kwargs": {
-                    "path": "Data"
-                }
-            }
-        }
-    },
-
-    "!db_Path":{
-        "$ref": "{{data.Dir}}",
-        "method": {
-            "name": "join_Path",
-            "kwargs": {
-                "path": "{{package.name}}.db"
-            }
-        }       
-    },
-    "!db_path":{
-        "$ref": "{{db_Path}}",
-        "attribute": "path"
-    },
-
+    "db_path":"{{data.Dir}}/{{package_name}}.db",
     "db_connection_module": "sqlite",
-
 
     "db_conn_kwargs" : {
         "db_path": "{{db_path}}",
@@ -38,6 +12,5 @@
         "check_same_thread": false
     }
     
-
 }
 
