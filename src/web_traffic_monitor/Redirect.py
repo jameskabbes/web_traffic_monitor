@@ -1,5 +1,5 @@
 from web_traffic_monitor import Columns, Tables, Base, utils
-
+import kabbes_menu
 
 import py_starter as ps
 import pandas as pd
@@ -7,15 +7,20 @@ import pandas as pd
 class Redirect( Base ):
 
     _OVERRIDE_OPTIONS = {
-    1: [ 'Make Inactivate', 'terminate' ]
+    "1": [ 'Make Inactivate', 'terminate' ]
     }
 
     _IMP_ATTS = [Columns.id, Columns.slug, Columns.redirect, Columns.datetime_start, Columns.datetime_end, Columns.is_current]
     _ONE_LINE_ATTS = ['type', Columns.slug, Columns.redirect, Columns.is_current]
     _SEARCHABLE_ATTS = [ Columns.id, Columns.redirect ]
 
+    cfg_menu = kabbes_menu.Client( _OVERRIDE_OPTIONS=_OVERRIDE_OPTIONS ).cfg_menu
+
+
     def __init__( self, Redirects_inst, **kwargs ):
         Base.__init__( self )
+        kabbes_menu.Menu.__init__( self )
+
         self.set_atts( kwargs )
         self.Redirects = Redirects_inst
 

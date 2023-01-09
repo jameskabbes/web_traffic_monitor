@@ -1,12 +1,12 @@
 from flask import Flask, redirect, abort
-from web_traffic_monitor import Monitor, queries, Columns, Tables
+from web_traffic_monitor import Client, queries, Columns, Tables
 import functools
 import py_starter as ps
 
-class FlaskMonitor( Flask, Monitor ):
+class FlaskMonitor( Flask, Client ):
 
-    def __init__( self, *Flask_args, Monitor_kwargs = {}, **Flask_kwargs ):
-        Monitor.__init__( self, **Monitor_kwargs )
+    def __init__( self, *Flask_args, Client_kwargs = {}, **Flask_kwargs ):
+        Client.__init__( self, **Client_kwargs )
         Flask.__init__( self, *Flask_args, **Flask_kwargs )
 
     def wtm_route( self, slug_formatted ):

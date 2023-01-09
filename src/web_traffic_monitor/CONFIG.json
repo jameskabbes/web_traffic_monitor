@@ -1,6 +1,6 @@
 {
 
-    "db_path":"{{data.Dir}}/{{package_name}}.db",
+    "db_path":"{{data.Dir}}/{{package.name}}.db",
     "db_connection_module": "sqlite",
 
     "db_conn_kwargs" : {

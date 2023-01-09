@@ -1,17 +1,22 @@
 from web_traffic_monitor import Tables, Columns, Base, utils
+import kabbes_menu
 
 import py_starter as ps
 import pandas as pd
 
-class Visit( Base ):
+class Visit( Base, kabbes_menu.Menu ):
+
+    _OVERRIDE_OPTIONS = {}
 
     _IMP_ATTS = [Columns.slug, Columns.datetime]
     _ONE_LINE_ATTS = ['type', Columns.datetime, Columns.slug]
     _SEARCHABLE_ATTS = [ Columns.datetime ]
 
+    cfg_menu = kabbes_menu.Client( _OVERRIDE_OPTIONS=_OVERRIDE_OPTIONS ).cfg_menu
 
     def __init__( self, Visits_inst, **kwargs ):
         Base.__init__( self )
+        kabbes_menu.Menu.__init__( self )
         self.set_atts( kwargs )
         self.Visits = Visits_inst
 
