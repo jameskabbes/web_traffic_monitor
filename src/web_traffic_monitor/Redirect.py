@@ -4,7 +4,7 @@ import kabbes_menu
 import py_starter as ps
 import pandas as pd
 
-class Redirect( Base ):
+class Redirect( Base, kabbes_menu.Menu ):
 
     _OVERRIDE_OPTIONS = {
     "1": [ 'Make Inactivate', 'terminate' ]
