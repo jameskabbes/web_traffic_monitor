@@ -61,11 +61,11 @@ class Redirect( Base ):
             if redirect == '':
                 return None
 
-            current_redirects = Slugs_inst.Slugs[slug].Redirects.get_current()
+            current_redirect = Slugs_inst.Slugs[slug].Redirects.get_current()
 
             active = False
-            for current_Redirect_inst in current_redirects:
-                if current_Redirect_inst.get_attr( Columns.redirect ) == redirect:
+            if current_redirect != None:
+                if current_redirect.get_attr( Columns.redirect ) == redirect:
                     print ('Redirect already active for this Slug')
                     active = True
                     break
@@ -74,9 +74,9 @@ class Redirect( Base ):
             
             if ps.confirm_raw('You have entered the redirect: ' + redirect):
                 break
-        
-        for current_Redirect_inst in current_redirects:
-            current_Redirect_inst.terminate()
+            
+        if current_redirect != None:
+            current_redirect.terminate()
 
         kwargs = {
             Columns.slug: slug,

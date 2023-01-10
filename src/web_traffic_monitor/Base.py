@@ -1,7 +1,7 @@
 import py_starter as ps
 from parent_class import ParentClass
 
-class Base:
+class Base( ParentClass ):
 
     DEFAULT_ATT_VALUES = {}
 
