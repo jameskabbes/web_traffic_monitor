@@ -1,6 +1,5 @@
 import web_traffic_monitor
 import kabbes_client
-import py_starter as ps
 
 class Client( web_traffic_monitor.Monitor ):
 
