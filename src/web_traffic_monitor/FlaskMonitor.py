@@ -6,7 +6,7 @@ import py_starter as ps
 class FlaskMonitor( Flask, Client ):
 
     def __init__( self, *Flask_args, Client_kwargs = {}, **Flask_kwargs ):
-        Client.__init__( self, **Client_kwargs )
+        Client.__init__( self, dict=Client_kwargs )
         Flask.__init__( self, *Flask_args, **Flask_kwargs )
 
     def wtm_route( self, slug_formatted ):

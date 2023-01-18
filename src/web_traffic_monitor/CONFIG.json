@@ -1,11 +1,11 @@
 {
 
-    "db_path":"{{data.Dir}}/{{package.name}}.db",
+    "db_path":"{{data.Dir}}/{R{package.name}R}.db",
     "db_connection_module": "sqlite",
 
     "db_conn_kwargs" : {
-        "db_path": "{{db_path}}",
-        "connection_module":"{{db_connection_module}}"       
+        "db_path": "{R{db_path}R}",
+        "connection_module":"{R{db_connection_module}R}"       
     },
 
     "db_get_conn_kwargs": {

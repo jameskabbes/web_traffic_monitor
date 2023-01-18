@@ -1,15 +1,18 @@
 import web_traffic_monitor
-import kabbes_user_client
+import kabbes_client
 import py_starter as ps
 
 class Client( web_traffic_monitor.Monitor ):
 
-    BASE_CONFIG_DICT = {
-        "_Dir": web_traffic_monitor._Dir
-    }
+    _BASE_DICT = {}
 
-    def __init__( self, dict={}, **kwargs ):
+    def __init__( self, dict={} ):
 
-        dict = ps.merge_dicts( Client.BASE_CONFIG_DICT, dict )
-        self.cfg_wtm = kabbes_user_client.Client( dict=dict, **kwargs ).cfg
+        d = {}
+        d.update( Client._BASE_DICT )
+        d.update( dict )
+
+        self.Package = kabbes_client.Package( web_traffic_monitor._Dir, dict=d )
+        self.cfg_wtm = self.Package.cfg
+
         web_traffic_monitor.Monitor.__init__( self )
