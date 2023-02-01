@@ -9,18 +9,15 @@ class FlaskMonitor( Flask, Client ):
         Client.__init__( self, dict=Client_kwargs )
         Flask.__init__( self, *Flask_args, **Flask_kwargs )
 
-    def wtm_route( self, slug_formatted ):
+    def wtm_route( self, slug_formatted, *args, **kwargs ):
         def decorator( func ):
             
-            @self.route( slug_formatted ) #traditional Flask app.route()
+            @self.route( slug_formatted, *args, **kwargs ) #traditional Flask app.route()
             @functools.wraps( func )
             def wrapper( *called_args, **called_kwargs ): #flask unpacks the slug string and passes it into kwargs
 
                 slug_raw_path = ps.smart_format( slug_formatted, called_kwargs, trigger_beg='<',trigger_end='>' )
                 
-                print (slug_formatted)
-                print (slug_raw_path)
-
                 self.log_Visit( slug_raw_path[1:] ) #remove the '/' 
                 return func( *called_args, **called_kwargs )
 
