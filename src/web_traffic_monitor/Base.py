@@ -1,12 +1,12 @@
 import py_starter as ps
-from kabbes_menu import Menu
+from parent_class import ParentClass
 
-class Base( Menu ):
+class Base( ParentClass ):
 
     DEFAULT_ATT_VALUES = {}
 
     def __init__( self, **kwargs ):
-        Menu.__init__( self )
+        ParentClass.__init__( self )
 
         ### Setup kwargs
         kwargs = ps.replace_default_kwargs( self.DEFAULT_ATT_VALUES, **kwargs )

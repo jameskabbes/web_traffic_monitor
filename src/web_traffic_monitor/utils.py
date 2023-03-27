@@ -1,6 +1,6 @@
 import datetime
 import pytz
-import nanoid
+import kabbes_nanoid
 import pandas as pd
 from web_traffic_monitor import Columns
 
@@ -64,5 +64,5 @@ def prep_df_for_export( df ):
 
 def get_nanoid():
 
-    return nanoid.generate( alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', size = 20 )
+    return kabbes_nanoid.generate( alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', size = 20 )
 

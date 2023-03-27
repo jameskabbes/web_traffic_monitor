@@ -25,4 +25,7 @@ from .Slug import Slug
 from .Slugs import Slugs
 
 from .Monitor import Monitor
+
+from .Client import Client
+
 from .FlaskMonitor import FlaskMonitor

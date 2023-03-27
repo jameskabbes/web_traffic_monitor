@@ -2,20 +2,24 @@ from parent_class import ParentPluralDict
 from web_traffic_monitor import Columns, Tables, Base, Redirect, Visit, Slug, utils
 import pandas as pd
 
+import kabbes_menu
 import py_starter as ps
 
-class Slugs( ParentPluralDict, Base ):
+class Slugs( ParentPluralDict, Base, kabbes_menu.Menu ):
 
     _OVERRIDE_OPTIONS = {
-    1: [ 'Open Slug', 'run_Child_user' ],
-    2: [ 'Make New Redirect', 'make_Redirect_user'],
-    3: [ 'Make New Visit', 'make_Visit_user'],
-    7: [ '', 'do_nothing' ]
+    "1": [ 'Open Slug', 'run_Child_user' ],
+    "2": [ 'Make New Redirect', 'make_Redirect_user'],
+    "3": [ 'Make New Visit', 'make_Visit_user'],
+    "7": [ '', 'do_nothing' ]
     }  
+
+    cfg_menu = kabbes_menu.Client( _OVERRIDE_OPTIONS=_OVERRIDE_OPTIONS ).cfg_menu
 
     def __init__( self, Monitor_inst, **kwargs ):
         ParentPluralDict.__init__( self, 'Slugs' )
         Base.__init__( self )
+        kabbes_menu.Menu.__init__( self )
         self.Monitor = Monitor_inst
 
     @staticmethod

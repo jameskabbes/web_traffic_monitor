@@ -1,21 +1,25 @@
 from parent_class import ParentClass
 from web_traffic_monitor import Columns, Tables, Base, Redirects, Visits, Visit, utils
 
+import kabbes_menu
 
-class Slug( Base ):
+class Slug( Base, kabbes_menu.Menu ):
 
     _OVERRIDE_OPTIONS = {
-    1: [ 'Open Redirects', 'open_Redirects' ],
-    2: [ 'Open Visits', 'open_Visits'],
-    3: [ 'Log Visit', 'log_Visit']
+    "1": [ 'Open Redirects', 'open_Redirects' ],
+    "2": [ 'Open Visits', 'open_Visits'],
+    "3": [ 'Log Visit', 'log_Visit']
     }
 
     _IMP_ATTS = [ Columns.slug, 'Redirects','Visits' ]
     _ONE_LINE_ATTS = [ 'type', Columns.slug ]
     _SEARCHABLE_ATTS = [ Columns.slug ]
 
+    cfg_menu = kabbes_menu.Client( _OVERRIDE_OPTIONS=_OVERRIDE_OPTIONS ).cfg_menu
+
     def __init__( self, Slugs_inst, slug ):
         Base.__init__( self )
+        kabbes_menu.Menu.__init__( self )
 
         self.set_attr( Columns.slug, slug ) 
         self.Slugs = Slugs_inst
