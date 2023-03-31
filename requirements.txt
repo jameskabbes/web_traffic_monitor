@@ -6,3 +6,4 @@ kabbes_client
 pandas
 kabbes_menu
 kabbes_nanoid
+kabbes_database_connections
