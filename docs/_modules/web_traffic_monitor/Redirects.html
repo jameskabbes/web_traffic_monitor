@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>web_traffic_monitor.Redirects &mdash; kabbes_web_traffic_monitor 0.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            kabbes_web_traffic_monitor
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">kabbes_web_traffic_monitor</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">web_traffic_monitor.Redirects</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for web_traffic_monitor.Redirects</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">parent_class</span> <span class="kn">import</span> <span class="n">ParentPluralList</span> 
+
+<span class="kn">from</span> <span class="nn">web_traffic_monitor</span> <span class="kn">import</span> <span class="n">Columns</span><span class="p">,</span> <span class="n">Tables</span><span class="p">,</span> <span class="n">utils</span><span class="p">,</span> <span class="n">Base</span><span class="p">,</span> <span class="n">Redirect</span>
+<span class="kn">import</span> <span class="nn">kabbes_menu</span>
+<span class="kn">import</span> <span class="nn">py_starter</span> <span class="k">as</span> <span class="nn">ps</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<div class="viewcode-block" id="Redirects"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.Redirects.Redirects">[docs]</a><span class="k">class</span> <span class="nc">Redirects</span><span class="p">(</span> <span class="n">ParentPluralList</span><span class="p">,</span> <span class="n">Base</span><span class="p">,</span> <span class="n">kabbes_menu</span><span class="o">.</span><span class="n">Menu</span> <span class="p">):</span>
+
+    <span class="n">_OVERRIDE_OPTIONS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;1&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;Open Redirect&#39;</span><span class="p">,</span> <span class="s1">&#39;run_Child_user&#39;</span> <span class="p">],</span>
+    <span class="s2">&quot;7&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;do_nothing&#39;</span> <span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="n">cfg_menu</span> <span class="o">=</span> <span class="n">kabbes_menu</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span> <span class="n">_OVERRIDE_OPTIONS</span><span class="o">=</span><span class="n">_OVERRIDE_OPTIONS</span> <span class="p">)</span><span class="o">.</span><span class="n">cfg_menu</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">Slug_inst</span> <span class="p">):</span>
+        <span class="n">ParentPluralList</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;Redirects&#39;</span> <span class="p">)</span>
+        <span class="n">Base</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span> <span class="p">)</span>
+        <span class="n">kabbes_menu</span><span class="o">.</span><span class="n">Menu</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Slug</span> <span class="o">=</span> <span class="n">Slug_inst</span>
+
+<div class="viewcode-block" id="Redirects.make"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.Redirects.Redirects.make">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">make</span><span class="p">(</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span> <span class="p">):</span>
+        <span class="k">return</span> <span class="n">Redirects</span><span class="p">(</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span> <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Redirects.make_Redirect"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.Redirects.Redirects.make_Redirect">[docs]</a>    <span class="k">def</span> <span class="nf">make_Redirect</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span> <span class="p">):</span>
+        <span class="n">new_Redirect</span> <span class="o">=</span> <span class="n">Redirect</span><span class="o">.</span><span class="n">make</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span> <span class="p">)</span>
+        <span class="k">return</span> <span class="n">new_Redirect</span></div>
+
+<div class="viewcode-block" id="Redirects.add_Redirect"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.Redirects.Redirects.add_Redirect">[docs]</a>    <span class="k">def</span> <span class="nf">add_Redirect</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">Redirect_inst</span> <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_add</span><span class="p">(</span> <span class="n">Redirect_inst</span> <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Redirects.get_current"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.Redirects.Redirects.get_current">[docs]</a>    <span class="k">def</span> <span class="nf">get_current</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+        
+        <span class="k">for</span> <span class="n">Redirect_inst</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">Redirect_inst</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span> <span class="n">Columns</span><span class="o">.</span><span class="n">is_current</span> <span class="p">):</span>
+                <span class="k">return</span> <span class="n">Redirect_inst</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="Redirects.export"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.Redirects.Redirects.export">[docs]</a>    <span class="k">def</span> <span class="nf">export</span><span class="p">(</span> <span class="bp">self</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+
+        <span class="n">dfs</span> <span class="o">=</span> <span class="p">[</span> <span class="n">Redirect_inst</span><span class="o">.</span><span class="n">export</span><span class="p">()</span> <span class="k">for</span> <span class="n">Redirect_inst</span> <span class="ow">in</span> <span class="bp">self</span> <span class="p">]</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span> <span class="n">dfs</span> <span class="p">)</span></div></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, James Kabbes.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

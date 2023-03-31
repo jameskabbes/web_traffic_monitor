@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>web_traffic_monitor.Redirect &mdash; kabbes_web_traffic_monitor 0.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            kabbes_web_traffic_monitor
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">kabbes_web_traffic_monitor</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">web_traffic_monitor.Redirect</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for web_traffic_monitor.Redirect</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">web_traffic_monitor</span> <span class="kn">import</span> <span class="n">Columns</span><span class="p">,</span> <span class="n">Tables</span><span class="p">,</span> <span class="n">Base</span><span class="p">,</span> <span class="n">utils</span>
+<span class="kn">import</span> <span class="nn">kabbes_menu</span>
+
+<span class="kn">import</span> <span class="nn">py_starter</span> <span class="k">as</span> <span class="nn">ps</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<div class="viewcode-block" id="Redirect"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.Redirect.Redirect">[docs]</a><span class="k">class</span> <span class="nc">Redirect</span><span class="p">(</span> <span class="n">Base</span><span class="p">,</span> <span class="n">kabbes_menu</span><span class="o">.</span><span class="n">Menu</span> <span class="p">):</span>
+
+    <span class="n">_OVERRIDE_OPTIONS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;1&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;Make Inactivate&#39;</span><span class="p">,</span> <span class="s1">&#39;terminate&#39;</span> <span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="n">_IMP_ATTS</span> <span class="o">=</span> <span class="p">[</span><span class="n">Columns</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">Columns</span><span class="o">.</span><span class="n">slug</span><span class="p">,</span> <span class="n">Columns</span><span class="o">.</span><span class="n">redirect</span><span class="p">,</span> <span class="n">Columns</span><span class="o">.</span><span class="n">datetime_start</span><span class="p">,</span> <span class="n">Columns</span><span class="o">.</span><span class="n">datetime_end</span><span class="p">,</span> <span class="n">Columns</span><span class="o">.</span><span class="n">is_current</span><span class="p">]</span>
+    <span class="n">_ONE_LINE_ATTS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="n">Columns</span><span class="o">.</span><span class="n">slug</span><span class="p">,</span> <span class="n">Columns</span><span class="o">.</span><span class="n">redirect</span><span class="p">,</span> <span class="n">Columns</span><span class="o">.</span><span class="n">is_current</span><span class="p">]</span>
+    <span class="n">_SEARCHABLE_ATTS</span> <span class="o">=</span> <span class="p">[</span> <span class="n">Columns</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">Columns</span><span class="o">.</span><span class="n">redirect</span> <span class="p">]</span>
+
+    <span class="n">cfg_menu</span> <span class="o">=</span> <span class="n">kabbes_menu</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span> <span class="n">_OVERRIDE_OPTIONS</span><span class="o">=</span><span class="n">_OVERRIDE_OPTIONS</span> <span class="p">)</span><span class="o">.</span><span class="n">cfg_menu</span>
+
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">Redirects_inst</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span> <span class="p">):</span>
+        <span class="n">Base</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span> <span class="p">)</span>
+        <span class="n">kabbes_menu</span><span class="o">.</span><span class="n">Menu</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span> <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_atts</span><span class="p">(</span> <span class="n">kwargs</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Redirects</span> <span class="o">=</span> <span class="n">Redirects_inst</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">other</span> <span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">other</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span> <span class="n">Columns</span><span class="o">.</span><span class="n">redirect</span> <span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span> <span class="n">Columns</span><span class="o">.</span><span class="n">redirect</span> <span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span>
+            
+<div class="viewcode-block" id="Redirect.make"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.Redirect.Redirect.make">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">make</span><span class="p">(</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span> <span class="p">):</span>
+        <span class="k">return</span> <span class="n">Redirect</span><span class="p">(</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span> <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Redirect.make_user"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.Redirect.Redirect.make_user">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">make_user</span><span class="p">(</span> <span class="n">Slugs_inst</span> <span class="p">):</span>
+
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">slug</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter the slug (enter to exit): &#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">slug</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">None</span>
+
+            <span class="k">if</span> <span class="n">slug</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">Slugs_inst</span><span class="o">.</span><span class="n">Slugs</span><span class="p">:</span>
+                <span class="n">Slugs_inst</span><span class="o">.</span><span class="n">make_Slug</span><span class="p">(</span> <span class="n">slug</span> <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">ps</span><span class="o">.</span><span class="n">confirm_raw</span><span class="p">(</span> <span class="s1">&#39;This Slug already exists.&#39;</span> <span class="p">):</span>
+                    <span class="k">continue</span>
+
+            <span class="k">if</span> <span class="n">ps</span><span class="o">.</span><span class="n">confirm_raw</span><span class="p">(</span> <span class="s1">&#39;You entered &#39;</span> <span class="o">+</span> <span class="n">slug</span> <span class="p">):</span>
+                <span class="k">break</span>
+        
+        <span class="n">Slugs_inst</span><span class="o">.</span><span class="n">Slugs</span><span class="p">[</span><span class="n">slug</span><span class="p">]</span><span class="o">.</span><span class="n">print_atts</span><span class="p">()</span>
+        <span class="n">Slugs_inst</span><span class="o">.</span><span class="n">Slugs</span><span class="p">[</span><span class="n">slug</span><span class="p">]</span><span class="o">.</span><span class="n">Redirects</span><span class="o">.</span><span class="n">print_atts</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="p">()</span>
+
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">redirect</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter the redirect (enter to exit): &#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">redirect</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">None</span>
+
+            <span class="n">current_redirect</span> <span class="o">=</span> <span class="n">Slugs_inst</span><span class="o">.</span><span class="n">Slugs</span><span class="p">[</span><span class="n">slug</span><span class="p">]</span><span class="o">.</span><span class="n">Redirects</span><span class="o">.</span><span class="n">get_current</span><span class="p">()</span>
+
+            <span class="n">active</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="n">current_redirect</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">current_redirect</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span> <span class="n">Columns</span><span class="o">.</span><span class="n">redirect</span> <span class="p">)</span> <span class="o">==</span> <span class="n">redirect</span><span class="p">:</span>
+                    <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Redirect already active for this Slug&#39;</span><span class="p">)</span>
+                    <span class="n">active</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="k">break</span>
+            <span class="k">if</span> <span class="n">active</span><span class="p">:</span>
+                <span class="k">continue</span>
+            
+            <span class="k">if</span> <span class="n">ps</span><span class="o">.</span><span class="n">confirm_raw</span><span class="p">(</span><span class="s1">&#39;You have entered the redirect: &#39;</span> <span class="o">+</span> <span class="n">redirect</span><span class="p">):</span>
+                <span class="k">break</span>
+            
+        <span class="k">if</span> <span class="n">current_redirect</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">current_redirect</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">Columns</span><span class="o">.</span><span class="n">slug</span><span class="p">:</span> <span class="n">slug</span><span class="p">,</span>
+            <span class="n">Columns</span><span class="o">.</span><span class="n">redirect</span><span class="p">:</span> <span class="n">redirect</span>
+        <span class="p">}</span>
+
+        <span class="n">new_Redirect_inst</span> <span class="o">=</span> <span class="n">Redirect</span><span class="o">.</span><span class="n">make</span><span class="p">(</span> <span class="n">Slugs_inst</span><span class="o">.</span><span class="n">Slugs</span><span class="p">[</span><span class="n">slug</span><span class="p">]</span><span class="o">.</span><span class="n">Redirects</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span> <span class="p">)</span>   
+        <span class="n">new_Redirect_inst</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">new_Redirect_inst</span></div>
+
+<div class="viewcode-block" id="Redirect.initialize"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.Redirect.Redirect.initialize">[docs]</a>    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_id</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">make_current</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span> <span class="n">Columns</span><span class="o">.</span><span class="n">datetime_start</span><span class="p">,</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_current_timestamp</span><span class="p">()</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span> <span class="n">Columns</span><span class="o">.</span><span class="n">datetime_end</span>  <span class="p">,</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_max_timestamp</span><span class="p">()</span> <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Redirect.get_id"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.Redirect.Redirect.get_id">[docs]</a>    <span class="k">def</span> <span class="nf">get_id</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span> <span class="n">Columns</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_nanoid</span><span class="p">()</span> <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Redirect.terminate"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.Redirect.Redirect.terminate">[docs]</a>    <span class="k">def</span> <span class="nf">terminate</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">make_past</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span> <span class="n">Columns</span><span class="o">.</span><span class="n">datetime_end</span> <span class="p">,</span> <span class="n">utils</span><span class="o">.</span><span class="n">get_current_timestamp</span><span class="p">()</span> <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Redirect.make_current"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.Redirect.Redirect.make_current">[docs]</a>    <span class="k">def</span> <span class="nf">make_current</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span> <span class="n">Columns</span><span class="o">.</span><span class="n">is_current</span> <span class="p">,</span> <span class="kc">True</span> <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Redirect.make_past"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.Redirect.Redirect.make_past">[docs]</a>    <span class="k">def</span> <span class="nf">make_past</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span> <span class="n">Columns</span><span class="o">.</span><span class="n">is_current</span> <span class="p">,</span> <span class="kc">False</span> <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Redirect.delete"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.Redirect.Redirect.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Redirects</span><span class="o">.</span><span class="n">_remove</span><span class="p">(</span> <span class="bp">self</span> <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Redirect.export"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.Redirect.Redirect.export">[docs]</a>    <span class="k">def</span> <span class="nf">export</span><span class="p">(</span> <span class="bp">self</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">utils</span><span class="o">.</span><span class="n">turn_class_atts_into_df_row</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">Tables</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span> <span class="n">Tables</span><span class="o">.</span><span class="n">dim</span> <span class="p">][</span><span class="s1">&#39;columns&#39;</span><span class="p">]</span> <span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, James Kabbes.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

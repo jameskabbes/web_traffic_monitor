@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>web_traffic_monitor package &mdash; kabbes_web_traffic_monitor 0.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="src" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            kabbes_web_traffic_monitor
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">web_traffic_monitor package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-web_traffic_monitor.Base">web_traffic_monitor.Base module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#web_traffic_monitor.Base.Base"><code class="docutils literal notranslate"><span class="pre">Base</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-web_traffic_monitor.Client">web_traffic_monitor.Client module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#web_traffic_monitor.Client.Client"><code class="docutils literal notranslate"><span class="pre">Client</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-web_traffic_monitor.Columns">web_traffic_monitor.Columns module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#web_traffic_monitor.Columns.Columns"><code class="docutils literal notranslate"><span class="pre">Columns</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-web_traffic_monitor.FlaskMonitor">web_traffic_monitor.FlaskMonitor module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#web_traffic_monitor.FlaskMonitor.FlaskMonitor"><code class="docutils literal notranslate"><span class="pre">FlaskMonitor</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-web_traffic_monitor.Monitor">web_traffic_monitor.Monitor module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#web_traffic_monitor.Monitor.Monitor"><code class="docutils literal notranslate"><span class="pre">Monitor</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-web_traffic_monitor.Redirect">web_traffic_monitor.Redirect module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#web_traffic_monitor.Redirect.Redirect"><code class="docutils literal notranslate"><span class="pre">Redirect</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-web_traffic_monitor.Redirects">web_traffic_monitor.Redirects module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#web_traffic_monitor.Redirects.Redirects"><code class="docutils literal notranslate"><span class="pre">Redirects</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-web_traffic_monitor.Slug">web_traffic_monitor.Slug module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#web_traffic_monitor.Slug.Slug"><code class="docutils literal notranslate"><span class="pre">Slug</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-web_traffic_monitor.Slugs">web_traffic_monitor.Slugs module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#web_traffic_monitor.Slugs.Slugs"><code class="docutils literal notranslate"><span class="pre">Slugs</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-web_traffic_monitor.Tables">web_traffic_monitor.Tables module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#web_traffic_monitor.Tables.Tables"><code class="docutils literal notranslate"><span class="pre">Tables</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-web_traffic_monitor.Visit">web_traffic_monitor.Visit module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#web_traffic_monitor.Visit.Visit"><code class="docutils literal notranslate"><span class="pre">Visit</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-web_traffic_monitor.Visits">web_traffic_monitor.Visits module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#web_traffic_monitor.Visits.Visits"><code class="docutils literal notranslate"><span class="pre">Visits</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-web_traffic_monitor.queries">web_traffic_monitor.queries module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#web_traffic_monitor.queries.get_active_redirect"><code class="docutils literal notranslate"><span class="pre">get_active_redirect()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-web_traffic_monitor.utils">web_traffic_monitor.utils module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#web_traffic_monitor.utils.get_current_timestamp"><code class="docutils literal notranslate"><span class="pre">get_current_timestamp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#web_traffic_monitor.utils.get_max_timestamp"><code class="docutils literal notranslate"><span class="pre">get_max_timestamp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#web_traffic_monitor.utils.get_nanoid"><code class="docutils literal notranslate"><span class="pre">get_nanoid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#web_traffic_monitor.utils.prep_df_for_export"><code class="docutils literal notranslate"><span class="pre">prep_df_for_export()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#web_traffic_monitor.utils.prep_df_for_import"><code class="docutils literal notranslate"><span class="pre">prep_df_for_import()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#web_traffic_monitor.utils.strftime"><code class="docutils literal notranslate"><span class="pre">strftime()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#web_traffic_monitor.utils.strptime"><code class="docutils literal notranslate"><span class="pre">strptime()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#web_traffic_monitor.utils.turn_class_atts_into_df_row"><code class="docutils literal notranslate"><span class="pre">turn_class_atts_into_df_row()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#web_traffic_monitor.utils.turn_df_row_into_kwargs"><code class="docutils literal notranslate"><span class="pre">turn_df_row_into_kwargs()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-web_traffic_monitor">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">kabbes_web_traffic_monitor</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">src</a></li>
+      <li class="breadcrumb-item active">web_traffic_monitor package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/web_traffic_monitor.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="web-traffic-monitor-package">
+<h1>web_traffic_monitor package<a class="headerlink" href="#web-traffic-monitor-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-web_traffic_monitor.Base">
+<span id="web-traffic-monitor-base-module"></span><h2>web_traffic_monitor.Base module<a class="headerlink" href="#module-web_traffic_monitor.Base" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="web_traffic_monitor.Base.Base">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">web_traffic_monitor.Base.</span></span><span class="sig-name descname"><span class="pre">Base</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Base.html#Base"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Base.Base" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ParentClass</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="web_traffic_monitor.Base.Base.DEFAULT_ATT_VALUES">
+<span class="sig-name descname"><span class="pre">DEFAULT_ATT_VALUES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#web_traffic_monitor.Base.Base.DEFAULT_ATT_VALUES" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Base.Base.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Base.html#Base.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Base.Base.delete" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Base.Base.delete_self">
+<span class="sig-name descname"><span class="pre">delete_self</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Base.html#Base.delete_self"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Base.Base.delete_self" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-web_traffic_monitor.Client">
+<span id="web-traffic-monitor-client-module"></span><h2>web_traffic_monitor.Client module<a class="headerlink" href="#module-web_traffic_monitor.Client" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="web_traffic_monitor.Client.Client">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">web_traffic_monitor.Client.</span></span><span class="sig-name descname"><span class="pre">Client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Client.html#Client"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Client.Client" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#web_traffic_monitor.Monitor.Monitor" title="web_traffic_monitor.Monitor.Monitor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Monitor</span></code></a></p>
+</dd></dl>
+
+</section>
+<section id="module-web_traffic_monitor.Columns">
+<span id="web-traffic-monitor-columns-module"></span><h2>web_traffic_monitor.Columns module<a class="headerlink" href="#module-web_traffic_monitor.Columns" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="web_traffic_monitor.Columns.Columns">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">web_traffic_monitor.Columns.</span></span><span class="sig-name descname"><span class="pre">Columns</span></span><a class="reference internal" href="_modules/web_traffic_monitor/Columns.html#Columns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Columns.Columns" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="web_traffic_monitor.Columns.Columns.datetime">
+<span class="sig-name descname"><span class="pre">datetime</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'datetime'</span></em><a class="headerlink" href="#web_traffic_monitor.Columns.Columns.datetime" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="web_traffic_monitor.Columns.Columns.datetime_cols">
+<span class="sig-name descname"><span class="pre">datetime_cols</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['datetime',</span> <span class="pre">'datetime_start',</span> <span class="pre">'datetime_end']</span></em><a class="headerlink" href="#web_traffic_monitor.Columns.Columns.datetime_cols" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="web_traffic_monitor.Columns.Columns.datetime_end">
+<span class="sig-name descname"><span class="pre">datetime_end</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'datetime_end'</span></em><a class="headerlink" href="#web_traffic_monitor.Columns.Columns.datetime_end" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="web_traffic_monitor.Columns.Columns.datetime_start">
+<span class="sig-name descname"><span class="pre">datetime_start</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'datetime_start'</span></em><a class="headerlink" href="#web_traffic_monitor.Columns.Columns.datetime_start" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="web_traffic_monitor.Columns.Columns.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'id'</span></em><a class="headerlink" href="#web_traffic_monitor.Columns.Columns.id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="web_traffic_monitor.Columns.Columns.is_current">
+<span class="sig-name descname"><span class="pre">is_current</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'is_current'</span></em><a class="headerlink" href="#web_traffic_monitor.Columns.Columns.is_current" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="web_traffic_monitor.Columns.Columns.redirect">
+<span class="sig-name descname"><span class="pre">redirect</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'redirect'</span></em><a class="headerlink" href="#web_traffic_monitor.Columns.Columns.redirect" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="web_traffic_monitor.Columns.Columns.slug">
+<span class="sig-name descname"><span class="pre">slug</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'slug'</span></em><a class="headerlink" href="#web_traffic_monitor.Columns.Columns.slug" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-web_traffic_monitor.FlaskMonitor">
+<span id="web-traffic-monitor-flaskmonitor-module"></span><h2>web_traffic_monitor.FlaskMonitor module<a class="headerlink" href="#module-web_traffic_monitor.FlaskMonitor" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="web_traffic_monitor.FlaskMonitor.FlaskMonitor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">web_traffic_monitor.FlaskMonitor.</span></span><span class="sig-name descname"><span class="pre">FlaskMonitor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">Flask_args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Client_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">Flask_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/FlaskMonitor.html#FlaskMonitor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.FlaskMonitor.FlaskMonitor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Flask</span></code>, <a class="reference internal" href="#web_traffic_monitor.Client.Client" title="web_traffic_monitor.Client.Client"><code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.FlaskMonitor.FlaskMonitor.get_active_Redirect">
+<span class="sig-name descname"><span class="pre">get_active_Redirect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slug</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/web_traffic_monitor/FlaskMonitor.html#FlaskMonitor.get_active_Redirect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.FlaskMonitor.FlaskMonitor.get_active_Redirect" title="Permalink to this definition"></a></dt>
+<dd><p>returns the redirect url for the given slug</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.FlaskMonitor.FlaskMonitor.log_Visit">
+<span class="sig-name descname"><span class="pre">log_Visit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slug</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/FlaskMonitor.html#FlaskMonitor.log_Visit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.FlaskMonitor.FlaskMonitor.log_Visit" title="Permalink to this definition"></a></dt>
+<dd><p>add a row to the Visits table</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.FlaskMonitor.FlaskMonitor.wtm_redirect">
+<span class="sig-name descname"><span class="pre">wtm_redirect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slug</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/FlaskMonitor.html#FlaskMonitor.wtm_redirect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.FlaskMonitor.FlaskMonitor.wtm_redirect" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.FlaskMonitor.FlaskMonitor.wtm_route">
+<span class="sig-name descname"><span class="pre">wtm_route</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slug_formatted</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/FlaskMonitor.html#FlaskMonitor.wtm_route"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.FlaskMonitor.FlaskMonitor.wtm_route" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-web_traffic_monitor.Monitor">
+<span id="web-traffic-monitor-monitor-module"></span><h2>web_traffic_monitor.Monitor module<a class="headerlink" href="#module-web_traffic_monitor.Monitor" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="web_traffic_monitor.Monitor.Monitor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">web_traffic_monitor.Monitor.</span></span><span class="sig-name descname"><span class="pre">Monitor</span></span><a class="reference internal" href="_modules/web_traffic_monitor/Monitor.html#Monitor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Monitor.Monitor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#web_traffic_monitor.Base.Base" title="web_traffic_monitor.Base.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Menu</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="web_traffic_monitor.Monitor.Monitor.DEFAULT_ATT_VALUES">
+<span class="sig-name descname"><span class="pre">DEFAULT_ATT_VALUES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#web_traffic_monitor.Monitor.Monitor.DEFAULT_ATT_VALUES" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="web_traffic_monitor.Monitor.Monitor.cfg_menu">
+<span class="sig-name descname"><span class="pre">cfg_menu</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;kabbes_config.Node.Node</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#web_traffic_monitor.Monitor.Monitor.cfg_menu" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Monitor.Monitor.exit">
+<span class="sig-name descname"><span class="pre">exit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Monitor.html#Monitor.exit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Monitor.Monitor.exit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Monitor.Monitor.init_db">
+<span class="sig-name descname"><span class="pre">init_db</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Monitor.html#Monitor.init_db"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Monitor.Monitor.init_db" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Monitor.Monitor.print_config">
+<span class="sig-name descname"><span class="pre">print_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Monitor.html#Monitor.print_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Monitor.Monitor.print_config" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Monitor.Monitor.query_db">
+<span class="sig-name descname"><span class="pre">query_db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/web_traffic_monitor/Monitor.html#Monitor.query_db"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Monitor.Monitor.query_db" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Monitor.Monitor.query_db_user">
+<span class="sig-name descname"><span class="pre">query_db_user</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Monitor.html#Monitor.query_db_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Monitor.Monitor.query_db_user" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Monitor.Monitor.run_RTI_choice">
+<span class="sig-name descname"><span class="pre">run_RTI_choice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Slugs_inst</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Monitor.html#Monitor.run_RTI_choice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Monitor.Monitor.run_RTI_choice" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-web_traffic_monitor.Redirect">
+<span id="web-traffic-monitor-redirect-module"></span><h2>web_traffic_monitor.Redirect module<a class="headerlink" href="#module-web_traffic_monitor.Redirect" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="web_traffic_monitor.Redirect.Redirect">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">web_traffic_monitor.Redirect.</span></span><span class="sig-name descname"><span class="pre">Redirect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Redirects_inst</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Redirect.html#Redirect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Redirect.Redirect" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#web_traffic_monitor.Base.Base" title="web_traffic_monitor.Base.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Menu</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="web_traffic_monitor.Redirect.Redirect.cfg_menu">
+<span class="sig-name descname"><span class="pre">cfg_menu</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;kabbes_config.Node.Node</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#web_traffic_monitor.Redirect.Redirect.cfg_menu" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Redirect.Redirect.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Redirect.html#Redirect.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Redirect.Redirect.delete" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Redirect.Redirect.export">
+<span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/web_traffic_monitor/Redirect.html#Redirect.export"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Redirect.Redirect.export" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Redirect.Redirect.get_id">
+<span class="sig-name descname"><span class="pre">get_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Redirect.html#Redirect.get_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Redirect.Redirect.get_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Redirect.Redirect.initialize">
+<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Redirect.html#Redirect.initialize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Redirect.Redirect.initialize" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Redirect.Redirect.make">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">make</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Redirect.html#Redirect.make"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Redirect.Redirect.make" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Redirect.Redirect.make_current">
+<span class="sig-name descname"><span class="pre">make_current</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Redirect.html#Redirect.make_current"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Redirect.Redirect.make_current" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Redirect.Redirect.make_past">
+<span class="sig-name descname"><span class="pre">make_past</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Redirect.html#Redirect.make_past"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Redirect.Redirect.make_past" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Redirect.Redirect.make_user">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">make_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Slugs_inst</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Redirect.html#Redirect.make_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Redirect.Redirect.make_user" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Redirect.Redirect.terminate">
+<span class="sig-name descname"><span class="pre">terminate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Redirect.html#Redirect.terminate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Redirect.Redirect.terminate" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-web_traffic_monitor.Redirects">
+<span id="web-traffic-monitor-redirects-module"></span><h2>web_traffic_monitor.Redirects module<a class="headerlink" href="#module-web_traffic_monitor.Redirects" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="web_traffic_monitor.Redirects.Redirects">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">web_traffic_monitor.Redirects.</span></span><span class="sig-name descname"><span class="pre">Redirects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Slug_inst</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Redirects.html#Redirects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Redirects.Redirects" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ParentPluralList</span></code>, <a class="reference internal" href="#web_traffic_monitor.Base.Base" title="web_traffic_monitor.Base.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Menu</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Redirects.Redirects.add_Redirect">
+<span class="sig-name descname"><span class="pre">add_Redirect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Redirect_inst</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Redirects.html#Redirects.add_Redirect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Redirects.Redirects.add_Redirect" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="web_traffic_monitor.Redirects.Redirects.cfg_menu">
+<span class="sig-name descname"><span class="pre">cfg_menu</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;kabbes_config.Node.Node</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#web_traffic_monitor.Redirects.Redirects.cfg_menu" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Redirects.Redirects.export">
+<span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/web_traffic_monitor/Redirects.html#Redirects.export"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Redirects.Redirects.export" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Redirects.Redirects.get_current">
+<span class="sig-name descname"><span class="pre">get_current</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Redirects.html#Redirects.get_current"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Redirects.Redirects.get_current" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Redirects.Redirects.make">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">make</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Redirects.html#Redirects.make"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Redirects.Redirects.make" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Redirects.Redirects.make_Redirect">
+<span class="sig-name descname"><span class="pre">make_Redirect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Redirects.html#Redirects.make_Redirect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Redirects.Redirects.make_Redirect" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-web_traffic_monitor.Slug">
+<span id="web-traffic-monitor-slug-module"></span><h2>web_traffic_monitor.Slug module<a class="headerlink" href="#module-web_traffic_monitor.Slug" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="web_traffic_monitor.Slug.Slug">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">web_traffic_monitor.Slug.</span></span><span class="sig-name descname"><span class="pre">Slug</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Slugs_inst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slug</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Slug.html#Slug"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Slug.Slug" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#web_traffic_monitor.Base.Base" title="web_traffic_monitor.Base.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Menu</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="web_traffic_monitor.Slug.Slug.cfg_menu">
+<span class="sig-name descname"><span class="pre">cfg_menu</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;kabbes_config.Node.Node</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#web_traffic_monitor.Slug.Slug.cfg_menu" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Slug.Slug.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Slug.html#Slug.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Slug.Slug.delete" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Slug.Slug.display">
+<span class="sig-name descname"><span class="pre">display</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Slug.html#Slug.display"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Slug.Slug.display" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Slug.Slug.log_Visit">
+<span class="sig-name descname"><span class="pre">log_Visit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Slug.html#Slug.log_Visit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Slug.Slug.log_Visit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Slug.Slug.make">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">make</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Slug.html#Slug.make"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Slug.Slug.make" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Slug.Slug.open_Redirects">
+<span class="sig-name descname"><span class="pre">open_Redirects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Slug.html#Slug.open_Redirects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Slug.Slug.open_Redirects" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Slug.Slug.open_Visits">
+<span class="sig-name descname"><span class="pre">open_Visits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Slug.html#Slug.open_Visits"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Slug.Slug.open_Visits" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-web_traffic_monitor.Slugs">
+<span id="web-traffic-monitor-slugs-module"></span><h2>web_traffic_monitor.Slugs module<a class="headerlink" href="#module-web_traffic_monitor.Slugs" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="web_traffic_monitor.Slugs.Slugs">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">web_traffic_monitor.Slugs.</span></span><span class="sig-name descname"><span class="pre">Slugs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Monitor_inst</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Slugs.html#Slugs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Slugs.Slugs" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ParentPluralDict</span></code>, <a class="reference internal" href="#web_traffic_monitor.Base.Base" title="web_traffic_monitor.Base.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Menu</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Slugs.Slugs.add_Slug">
+<span class="sig-name descname"><span class="pre">add_Slug</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Slug_inst</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Slugs.html#Slugs.add_Slug"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Slugs.Slugs.add_Slug" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="web_traffic_monitor.Slugs.Slugs.cfg_menu">
+<span class="sig-name descname"><span class="pre">cfg_menu</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;kabbes_config.Node.Node</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#web_traffic_monitor.Slugs.Slugs.cfg_menu" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Slugs.Slugs.check_and_make_Slug">
+<span class="sig-name descname"><span class="pre">check_and_make_Slug</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slug</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Slugs.html#Slugs.check_and_make_Slug"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Slugs.Slugs.check_and_make_Slug" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Slugs.Slugs.log_Visit">
+<span class="sig-name descname"><span class="pre">log_Visit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slug</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Slugs.html#Slugs.log_Visit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Slugs.Slugs.log_Visit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Slugs.Slugs.make">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">make</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Slugs.html#Slugs.make"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Slugs.Slugs.make" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Slugs.Slugs.make_Redirect">
+<span class="sig-name descname"><span class="pre">make_Redirect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Slugs.html#Slugs.make_Redirect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Slugs.Slugs.make_Redirect" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Slugs.Slugs.make_Redirect_user">
+<span class="sig-name descname"><span class="pre">make_Redirect_user</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Slugs.html#Slugs.make_Redirect_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Slugs.Slugs.make_Redirect_user" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Slugs.Slugs.make_Slug">
+<span class="sig-name descname"><span class="pre">make_Slug</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slug</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Slugs.html#Slugs.make_Slug"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Slugs.Slugs.make_Slug" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Slugs.Slugs.make_Visit">
+<span class="sig-name descname"><span class="pre">make_Visit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Slugs.html#Slugs.make_Visit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Slugs.Slugs.make_Visit" title="Permalink to this definition"></a></dt>
+<dd><p>Make and add visit</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Slugs.Slugs.make_Visit_user">
+<span class="sig-name descname"><span class="pre">make_Visit_user</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Slugs.html#Slugs.make_Visit_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Slugs.Slugs.make_Visit_user" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-web_traffic_monitor.Tables">
+<span id="web-traffic-monitor-tables-module"></span><h2>web_traffic_monitor.Tables module<a class="headerlink" href="#module-web_traffic_monitor.Tables" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="web_traffic_monitor.Tables.Tables">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">web_traffic_monitor.Tables.</span></span><span class="sig-name descname"><span class="pre">Tables</span></span><a class="reference internal" href="_modules/web_traffic_monitor/Tables.html#Tables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Tables.Tables" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="web_traffic_monitor.Tables.Tables.redirects">
+<span class="sig-name descname"><span class="pre">redirects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'redirects'</span></em><a class="headerlink" href="#web_traffic_monitor.Tables.Tables.redirects" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="web_traffic_monitor.Tables.Tables.tables">
+<span class="sig-name descname"><span class="pre">tables</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'redirects':</span> <span class="pre">{'columns':</span> <span class="pre">['id',</span> <span class="pre">'slug',</span> <span class="pre">'redirect',</span> <span class="pre">'datetime_start',</span> <span class="pre">'datetime_end',</span> <span class="pre">'is_current']},</span> <span class="pre">'visits':</span> <span class="pre">{'columns':</span> <span class="pre">['slug',</span> <span class="pre">'datetime']}}</span></em><a class="headerlink" href="#web_traffic_monitor.Tables.Tables.tables" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="web_traffic_monitor.Tables.Tables.visits">
+<span class="sig-name descname"><span class="pre">visits</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'visits'</span></em><a class="headerlink" href="#web_traffic_monitor.Tables.Tables.visits" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-web_traffic_monitor.Visit">
+<span id="web-traffic-monitor-visit-module"></span><h2>web_traffic_monitor.Visit module<a class="headerlink" href="#module-web_traffic_monitor.Visit" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="web_traffic_monitor.Visit.Visit">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">web_traffic_monitor.Visit.</span></span><span class="sig-name descname"><span class="pre">Visit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Visits_inst</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Visit.html#Visit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Visit.Visit" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#web_traffic_monitor.Base.Base" title="web_traffic_monitor.Base.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Menu</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="web_traffic_monitor.Visit.Visit.cfg_menu">
+<span class="sig-name descname"><span class="pre">cfg_menu</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;kabbes_config.Node.Node</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#web_traffic_monitor.Visit.Visit.cfg_menu" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Visit.Visit.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Visit.html#Visit.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Visit.Visit.delete" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Visit.Visit.export">
+<span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/web_traffic_monitor/Visit.html#Visit.export"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Visit.Visit.export" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Visit.Visit.make">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">make</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Visit.html#Visit.make"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Visit.Visit.make" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Visit.Visit.make_user">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">make_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Slugs_inst</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Visit.html#Visit.make_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Visit.Visit.make_user" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-web_traffic_monitor.Visits">
+<span id="web-traffic-monitor-visits-module"></span><h2>web_traffic_monitor.Visits module<a class="headerlink" href="#module-web_traffic_monitor.Visits" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="web_traffic_monitor.Visits.Visits">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">web_traffic_monitor.Visits.</span></span><span class="sig-name descname"><span class="pre">Visits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Slug_inst</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Visits.html#Visits"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Visits.Visits" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ParentPluralList</span></code>, <a class="reference internal" href="#web_traffic_monitor.Base.Base" title="web_traffic_monitor.Base.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Menu</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Visits.Visits.add_Visit">
+<span class="sig-name descname"><span class="pre">add_Visit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Visit_inst</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Visits.html#Visits.add_Visit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Visits.Visits.add_Visit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="web_traffic_monitor.Visits.Visits.cfg_menu">
+<span class="sig-name descname"><span class="pre">cfg_menu</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;kabbes_config.Node.Node</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#web_traffic_monitor.Visits.Visits.cfg_menu" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Visits.Visits.export">
+<span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/web_traffic_monitor/Visits.html#Visits.export"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Visits.Visits.export" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Visits.Visits.make">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">make</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Visits.html#Visits.make"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Visits.Visits.make" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="web_traffic_monitor.Visits.Visits.make_Visit">
+<span class="sig-name descname"><span class="pre">make_Visit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/Visits.html#Visits.make_Visit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.Visits.Visits.make_Visit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-web_traffic_monitor.queries">
+<span id="web-traffic-monitor-queries-module"></span><h2>web_traffic_monitor.queries module<a class="headerlink" href="#module-web_traffic_monitor.queries" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="web_traffic_monitor.queries.get_active_redirect">
+<span class="sig-prename descclassname"><span class="pre">web_traffic_monitor.queries.</span></span><span class="sig-name descname"><span class="pre">get_active_redirect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slug</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/web_traffic_monitor/queries.html#get_active_redirect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.queries.get_active_redirect" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-web_traffic_monitor.utils">
+<span id="web-traffic-monitor-utils-module"></span><h2>web_traffic_monitor.utils module<a class="headerlink" href="#module-web_traffic_monitor.utils" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="web_traffic_monitor.utils.get_current_timestamp">
+<span class="sig-prename descclassname"><span class="pre">web_traffic_monitor.utils.</span></span><span class="sig-name descname"><span class="pre">get_current_timestamp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/utils.html#get_current_timestamp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.utils.get_current_timestamp" title="Permalink to this definition"></a></dt>
+<dd><p>returns current timestamp in UTC</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="web_traffic_monitor.utils.get_max_timestamp">
+<span class="sig-prename descclassname"><span class="pre">web_traffic_monitor.utils.</span></span><span class="sig-name descname"><span class="pre">get_max_timestamp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/utils.html#get_max_timestamp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.utils.get_max_timestamp" title="Permalink to this definition"></a></dt>
+<dd><p>returns max timestamp</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="web_traffic_monitor.utils.get_nanoid">
+<span class="sig-prename descclassname"><span class="pre">web_traffic_monitor.utils.</span></span><span class="sig-name descname"><span class="pre">get_nanoid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/utils.html#get_nanoid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.utils.get_nanoid" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="web_traffic_monitor.utils.prep_df_for_export">
+<span class="sig-prename descclassname"><span class="pre">web_traffic_monitor.utils.</span></span><span class="sig-name descname"><span class="pre">prep_df_for_export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/utils.html#prep_df_for_export"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.utils.prep_df_for_export" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="web_traffic_monitor.utils.prep_df_for_import">
+<span class="sig-prename descclassname"><span class="pre">web_traffic_monitor.utils.</span></span><span class="sig-name descname"><span class="pre">prep_df_for_import</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/utils.html#prep_df_for_import"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.utils.prep_df_for_import" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="web_traffic_monitor.utils.strftime">
+<span class="sig-prename descclassname"><span class="pre">web_traffic_monitor.utils.</span></span><span class="sig-name descname"><span class="pre">strftime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dt_object</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/utils.html#strftime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.utils.strftime" title="Permalink to this definition"></a></dt>
+<dd><p>string from time</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="web_traffic_monitor.utils.strptime">
+<span class="sig-prename descclassname"><span class="pre">web_traffic_monitor.utils.</span></span><span class="sig-name descname"><span class="pre">strptime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/utils.html#strptime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.utils.strptime" title="Permalink to this definition"></a></dt>
+<dd><p>string push time</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="web_traffic_monitor.utils.turn_class_atts_into_df_row">
+<span class="sig-prename descclassname"><span class="pre">web_traffic_monitor.utils.</span></span><span class="sig-name descname"><span class="pre">turn_class_atts_into_df_row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/utils.html#turn_class_atts_into_df_row"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.utils.turn_class_atts_into_df_row" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="web_traffic_monitor.utils.turn_df_row_into_kwargs">
+<span class="sig-prename descclassname"><span class="pre">web_traffic_monitor.utils.</span></span><span class="sig-name descname"><span class="pre">turn_df_row_into_kwargs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/web_traffic_monitor/utils.html#turn_df_row_into_kwargs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#web_traffic_monitor.utils.turn_df_row_into_kwargs" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-web_traffic_monitor">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-web_traffic_monitor" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="src" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, James Kabbes.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

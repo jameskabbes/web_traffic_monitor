@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>web_traffic_monitor.utils &mdash; kabbes_web_traffic_monitor 0.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            kabbes_web_traffic_monitor
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">kabbes_web_traffic_monitor</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">web_traffic_monitor.utils</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for web_traffic_monitor.utils</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">pytz</span>
+<span class="kn">import</span> <span class="nn">kabbes_nanoid</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">web_traffic_monitor</span> <span class="kn">import</span> <span class="n">Columns</span>
+
+<span class="n">DT_FORMAT</span> <span class="o">=</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S.</span><span class="si">%f</span><span class="s1">%z&#39;</span>
+
+<div class="viewcode-block" id="get_current_timestamp"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.utils.get_current_timestamp">[docs]</a><span class="k">def</span> <span class="nf">get_current_timestamp</span><span class="p">():</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;returns current timestamp in UTC&quot;&quot;&quot;</span>
+
+    <span class="n">dt_now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+    <span class="n">dt_now_utc</span> <span class="o">=</span> <span class="n">dt_now</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span> <span class="n">pytz</span><span class="o">.</span><span class="n">utc</span> <span class="p">)</span> 
+
+    <span class="k">return</span> <span class="n">dt_now_utc</span></div>
+
+<div class="viewcode-block" id="get_max_timestamp"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.utils.get_max_timestamp">[docs]</a><span class="k">def</span> <span class="nf">get_max_timestamp</span><span class="p">():</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;returns max timestamp&quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">max</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span> <span class="o">=</span> <span class="n">pytz</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="turn_df_row_into_kwargs"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.utils.turn_df_row_into_kwargs">[docs]</a><span class="k">def</span> <span class="nf">turn_df_row_into_kwargs</span><span class="p">(</span> <span class="n">df_row</span><span class="p">,</span> <span class="n">columns</span> <span class="p">):</span>
+    
+    <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
+        <span class="n">kwargs</span><span class="p">[</span> <span class="n">col</span> <span class="p">]</span> <span class="o">=</span> <span class="n">df_row</span><span class="p">[</span> <span class="n">col</span> <span class="p">]</span>
+    <span class="k">return</span> <span class="n">kwargs</span></div>
+
+<div class="viewcode-block" id="turn_class_atts_into_df_row"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.utils.turn_class_atts_into_df_row">[docs]</a><span class="k">def</span> <span class="nf">turn_class_atts_into_df_row</span><span class="p">(</span> <span class="n">instance</span><span class="p">,</span> <span class="n">columns</span> <span class="p">):</span>
+
+    <span class="n">dict_df</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
+        <span class="n">dict_df</span><span class="p">[</span> <span class="n">col</span> <span class="p">]</span> <span class="o">=</span> <span class="p">[</span> <span class="n">instance</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span> <span class="n">col</span> <span class="p">)</span> <span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span> <span class="n">dict_df</span> <span class="p">)</span></div>
+
+<div class="viewcode-block" id="strftime"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.utils.strftime">[docs]</a><span class="k">def</span> <span class="nf">strftime</span><span class="p">(</span> <span class="n">dt_object</span> <span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;string from time&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">dt_object</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span> <span class="n">DT_FORMAT</span> <span class="p">)</span></div>
+
+<div class="viewcode-block" id="strptime"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.utils.strptime">[docs]</a><span class="k">def</span> <span class="nf">strptime</span><span class="p">(</span> <span class="n">string</span> <span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;string push time&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span> <span class="n">string</span><span class="p">,</span> <span class="n">DT_FORMAT</span> <span class="p">)</span></div>
+
+<div class="viewcode-block" id="prep_df_for_import"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.utils.prep_df_for_import">[docs]</a><span class="k">def</span> <span class="nf">prep_df_for_import</span><span class="p">(</span> <span class="n">df</span> <span class="p">):</span>
+
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">Columns</span><span class="o">.</span><span class="n">datetime_cols</span><span class="p">:</span>
+            <span class="n">df</span><span class="p">[</span> <span class="n">col</span> <span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span> <span class="n">col</span> <span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span> <span class="k">lambda</span> <span class="n">string</span><span class="p">:</span> <span class="n">strptime</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span></div>
+
+<div class="viewcode-block" id="prep_df_for_export"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.utils.prep_df_for_export">[docs]</a><span class="k">def</span> <span class="nf">prep_df_for_export</span><span class="p">(</span> <span class="n">df</span> <span class="p">):</span>
+
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">Columns</span><span class="o">.</span><span class="n">datetime_cols</span><span class="p">:</span>
+            <span class="n">df</span><span class="p">[</span> <span class="n">col</span> <span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span> <span class="n">col</span> <span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span> <span class="k">lambda</span> <span class="n">dt_obj</span><span class="p">:</span> <span class="n">strftime</span><span class="p">(</span><span class="n">dt_obj</span><span class="p">)</span> <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span></div>
+
+<div class="viewcode-block" id="get_nanoid"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.utils.get_nanoid">[docs]</a><span class="k">def</span> <span class="nf">get_nanoid</span><span class="p">():</span>
+
+    <span class="k">return</span> <span class="n">kabbes_nanoid</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span> <span class="n">alphabet</span> <span class="o">=</span> <span class="s1">&#39;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">20</span> <span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, James Kabbes.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

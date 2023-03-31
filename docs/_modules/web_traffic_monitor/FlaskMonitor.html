@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>web_traffic_monitor.FlaskMonitor &mdash; kabbes_web_traffic_monitor 0.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            kabbes_web_traffic_monitor
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">kabbes_web_traffic_monitor</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">web_traffic_monitor.FlaskMonitor</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for web_traffic_monitor.FlaskMonitor</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">abort</span>
+<span class="kn">from</span> <span class="nn">web_traffic_monitor</span> <span class="kn">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">queries</span><span class="p">,</span> <span class="n">Columns</span><span class="p">,</span> <span class="n">Tables</span>
+<span class="kn">import</span> <span class="nn">functools</span>
+<span class="kn">import</span> <span class="nn">py_starter</span> <span class="k">as</span> <span class="nn">ps</span>
+
+<div class="viewcode-block" id="FlaskMonitor"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.FlaskMonitor.FlaskMonitor">[docs]</a><span class="k">class</span> <span class="nc">FlaskMonitor</span><span class="p">(</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">Client</span> <span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">Flask_args</span><span class="p">,</span> <span class="n">Client_kwargs</span> <span class="o">=</span> <span class="p">{},</span> <span class="o">**</span><span class="n">Flask_kwargs</span> <span class="p">):</span>
+        <span class="n">Client</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="nb">dict</span><span class="o">=</span><span class="n">Client_kwargs</span> <span class="p">)</span>
+        <span class="n">Flask</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">Flask_args</span><span class="p">,</span> <span class="o">**</span><span class="n">Flask_kwargs</span> <span class="p">)</span>
+
+<div class="viewcode-block" id="FlaskMonitor.wtm_route"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.FlaskMonitor.FlaskMonitor.wtm_route">[docs]</a>    <span class="k">def</span> <span class="nf">wtm_route</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">slug_formatted</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span> <span class="p">):</span>
+        <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span> <span class="n">func</span> <span class="p">):</span>
+            
+            <span class="nd">@self</span><span class="o">.</span><span class="n">route</span><span class="p">(</span> <span class="n">slug_formatted</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span> <span class="p">)</span> <span class="c1">#traditional Flask app.route()</span>
+            <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span> <span class="n">func</span> <span class="p">)</span>
+            <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span> <span class="o">*</span><span class="n">called_args</span><span class="p">,</span> <span class="o">**</span><span class="n">called_kwargs</span> <span class="p">):</span> <span class="c1">#flask unpacks the slug string and passes it into kwargs</span>
+
+                <span class="n">slug_raw_path</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">smart_format</span><span class="p">(</span> <span class="n">slug_formatted</span><span class="p">,</span> <span class="n">called_kwargs</span><span class="p">,</span> <span class="n">trigger_beg</span><span class="o">=</span><span class="s1">&#39;&lt;&#39;</span><span class="p">,</span><span class="n">trigger_end</span><span class="o">=</span><span class="s1">&#39;&gt;&#39;</span> <span class="p">)</span>
+                
+                <span class="bp">self</span><span class="o">.</span><span class="n">log_Visit</span><span class="p">(</span> <span class="n">slug_raw_path</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="p">)</span> <span class="c1">#remove the &#39;/&#39; </span>
+                <span class="k">return</span> <span class="n">func</span><span class="p">(</span> <span class="o">*</span><span class="n">called_args</span><span class="p">,</span> <span class="o">**</span><span class="n">called_kwargs</span> <span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">wrapper</span>
+        <span class="k">return</span> <span class="n">decorator</span></div>
+    
+<div class="viewcode-block" id="FlaskMonitor.wtm_redirect"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.FlaskMonitor.FlaskMonitor.wtm_redirect">[docs]</a>    <span class="k">def</span> <span class="nf">wtm_redirect</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">slug</span> <span class="p">):</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_active_Redirect</span><span class="p">(</span> <span class="n">slug</span> <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">url</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span> <span class="n">url</span> <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">abort</span><span class="p">(</span><span class="mi">404</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FlaskMonitor.log_Visit"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.FlaskMonitor.FlaskMonitor.log_Visit">[docs]</a>    <span class="k">def</span> <span class="nf">log_Visit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slug</span><span class="p">):</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;add a row to the Visits table&quot;&quot;&quot;</span>
+
+        <span class="n">new_Visit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Slugs</span><span class="o">.</span><span class="n">log_Visit</span><span class="p">(</span> <span class="n">slug</span> <span class="p">)</span>
+        <span class="n">df_Visit</span> <span class="o">=</span> <span class="n">new_Visit</span><span class="o">.</span><span class="n">export</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">db_conn</span><span class="o">.</span><span class="n">write</span><span class="p">(</span> <span class="n">df_Visit</span><span class="p">,</span> <span class="n">Tables</span><span class="o">.</span><span class="n">visits</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;append&#39;</span> <span class="p">)</span></div>
+
+<div class="viewcode-block" id="FlaskMonitor.get_active_Redirect"><a class="viewcode-back" href="../../web_traffic_monitor.html#web_traffic_monitor.FlaskMonitor.FlaskMonitor.get_active_Redirect">[docs]</a>    <span class="k">def</span> <span class="nf">get_active_Redirect</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">slug</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;returns the redirect url for the given slug&quot;&quot;&quot;</span>
+
+        <span class="n">df_redirects</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query_db</span><span class="p">(</span> <span class="n">queries</span><span class="o">.</span><span class="n">get_active_redirect</span><span class="p">(</span> <span class="n">slug</span> <span class="p">)</span> <span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_redirects</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">df_redirects</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Columns</span><span class="o">.</span><span class="n">redirect</span> <span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">abort</span><span class="p">(</span><span class="mi">404</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, James Kabbes.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
