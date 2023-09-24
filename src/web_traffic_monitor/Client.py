@@ -3,16 +3,24 @@ import datetime
 import importlib
 
 def get_current_datetime():
-    return datetime.datetime.utcnow()
+    dt = datetime.datetime.utcnow()
+    return dt.replace( tzinfo=datetime.timezone.utc )
 
 class Client:
 
-    def __init__( self, *engine_args, engine='sqlite3', schema='test', **engine_kwargs ):
+    def __init__( self, *engine_args, db_inst=None, engine='sqlite3', schema_inst=None, schema='base', **engine_kwargs ):
 
         LOGGER.info( 'initializing web_traffic_monitor with engine ({}) and schema ({})'.format( engine, schema ) )
 
-        self.schema = getattr( importlib.import_module( '.'+schema, package='web_traffic_monitor.schemas' ) , 'Schema' )
-        self.db =     getattr( importlib.import_module( '.'+engine, package='web_traffic_monitor.engines' ) , 'DB' )( self.schema, *engine_args, **engine_kwargs )
+        if schema_inst is None:
+            self.schema = getattr( importlib.import_module( '.'+schema, package='web_traffic_monitor.schemas' ) , 'Schema' )
+        else: 
+            self.schema = schema_inst   
+
+        if db_inst is None:
+            self.db = getattr( importlib.import_module( '.'+engine, package='web_traffic_monitor.engines' ) , 'DB' )( self.schema, *engine_args, **engine_kwargs )
+        else:
+            self.db = db_inst  
 
     def log_visit( self, slug: str, dt: datetime.datetime = get_current_datetime() ):
         

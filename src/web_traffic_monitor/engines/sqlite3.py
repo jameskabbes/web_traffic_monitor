@@ -1,5 +1,4 @@
 from web_traffic_monitor.engines.base import DB as BaseDB
-from web_traffic_monitor import LOGGER
 import sqlite3
 
 class DB( BaseDB ):
