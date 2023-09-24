@@ -1,4 +1,5 @@
 from web_traffic_monitor.engines.base import DB as BaseDB
+from web_traffic_monitor import LOGGER
 import sqlite3
 
 class DB( BaseDB ):
@@ -9,14 +10,15 @@ class DB( BaseDB ):
         self.conn = sqlite3.connect( path )
         BaseDB.__init__( self, schema )
 
+    @BaseDB.query_wrap
     def query( self, string: str ):
-        print (string)
         return self.conn.execute( string ).fetchall()
-
+    
+    @BaseDB.execute_wrap
     def execute( self, string: str ):
-        print (string)
         self.conn.execute( string )
 
+    @BaseDB.commit_wrap
     def commit( self ):
         self.conn.commit()
 
