@@ -1,3 +1,2 @@
-import web_traffic_monitor
-C = web_traffic_monitor.Client()
-C.run()
+from web_traffic_monitor import Client
+Client()
