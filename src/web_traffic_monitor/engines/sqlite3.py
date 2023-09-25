@@ -6,7 +6,7 @@ class DB( BaseDB ):
     GET_TABLES_QUERY = 'SELECT name FROM sqlite_master WHERE type="table";'
 
     def __init__( self, schema, *args, path='web_traffic_monitor.db', **kwargs ):
-        self.conn = sqlite3.connect( path )
+        self.conn = sqlite3.connect( path, check_same_thread=False )
         BaseDB.__init__( self, schema )
 
     @BaseDB.query_wrap
